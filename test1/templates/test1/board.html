@@ -1,0 +1,30 @@
+{% extends "test1/layout.html" %}
+{% block title %}
+홈페이지
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+		<table class="table table-striped">
+        <a href="{% url 'test1:writeboard'%}"><b class="btn btn-info pull-right>" style="font-size:10pt">글 작성</b></a>
+        <thead>
+        <tr>
+        <th>작성자</th>
+        <th>내용</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for board1 in boardlist %}
+        <tr><td>{{board1.name}}</td>
+        <td>{{board1.introduction}}</td>
+        <td><form method="POST" action="deleteboard"><button  class="btn btn-info pull-right" name="deletename" value={{board1.name}}> 삭제</button></form></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+</div>
+
+   
+{% endblock %}
